@@ -7,20 +7,29 @@ import edu.iastate.coms572.lab1.util.FileLoader;
 
 public abstract class WebGraphSearcher {
 	
-	private Set<String> openSet;
+	protected Set<String> openSet;
 	
-	private Set<String> closedSet;
+	protected Set<String> closedSet;
 	
-	private String startNode;
+	protected String startNode;
 	
-	private String goalPattern;
+	protected  String goalPattern;
 	
-	public WebGraphSearcher(String startNode, String goalPattern, FileLoader loader, Strategy strategy){
+	public WebGraphSearcher(String startNode, String goalPattern, FileLoader loader){
 		this.openSet = new HashSet<String>();
 		this.closedSet = new HashSet<String>();
 		this.startNode = startNode;
 		this.goalPattern = goalPattern;
 		
+	}
+	
+	
+	
+	
+	protected SearchNode buildNodeFromFileName(String fileName){
+		
+		
+		return null;
 	}
 	
 	
