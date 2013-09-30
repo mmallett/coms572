@@ -11,9 +11,9 @@ public class Link {
 	
 	private String dest;
 	
-	private List<String> data;
+	private String data;
 	
-	private Link(String dest, List<String> data){
+	private Link(String dest, String data){
 		this.dest = dest;
 		this.data = data;
 	}
@@ -22,7 +22,7 @@ public class Link {
 		return dest;
 	}
 	
-	public List<String> getData(){
+	public String getData(){
 		return this.data;
 	}
 	
@@ -44,15 +44,14 @@ public class Link {
 				
 				tokenizer.nextToken();
 				
-				ArrayList<String> linkData = new ArrayList<String>();
-				
 				token = tokenizer.nextToken();
+				StringBuilder b = new StringBuilder();
 				while(!token.equalsIgnoreCase("</A>")){
-					linkData.add(token);
+					b.append(token + " ");
 					token = tokenizer.nextToken();
 				}
 				
-				linkList.add(new Link(destination, linkData));
+				linkList.add(new Link(destination, b.toString()));
 			}
 		}
 		
@@ -71,7 +70,7 @@ public class Link {
 	}
 	
 	
-	@Override
+	/*@Override
 	public String toString(){
 		StringBuilder b = new StringBuilder();
 		b.append(dest + " ");
@@ -79,7 +78,7 @@ public class Link {
 			b.append(item + " ");
 		}
 		return b.toString();
-	}
+	}/*
 	//testing ( it worked =] )
 	/*
 	public static void main(String args[]){
