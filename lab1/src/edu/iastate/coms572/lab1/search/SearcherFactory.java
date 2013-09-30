@@ -10,7 +10,9 @@ public class SearcherFactory {
 		if(searchType.equalsIgnoreCase(SearchType.BFS.toString())){
 			return new BfsSearcher(startNode, goalPattern, loader);
 		}
-		
+		else if(searchType.equalsIgnoreCase(SearchType.DFS.toString())){
+			return new DfsSearcher(startNode, goalPattern, loader);
+		}
 		return null;
 	}
 
