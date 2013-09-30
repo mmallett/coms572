@@ -31,45 +31,7 @@ public class DfsSearcher extends WebGraphSearcher{
 		SearchNode start = new SearchNode(startNode, null, Link.buildLinkListFromString(contents), contents);
 		
 		boolean goalFound = recursiveSearch(start);
-		/*
 		
-		
-		stack.push(start);
-		
-		while(!stack.isEmpty()){
-			SearchNode node = stack.pop();
-			super.nodesVisited++;
-			
-			//check if goal state
-			for(Link link : node.getLinks()){
-				if(link.isGoal(goalSet)){
-					System.out.println("Nodes visited: " + super.nodesVisited);
-					System.out.println(link.getDestination());
-					node.reportSolutionPath();
-					return;
-				}
-				
-			}//end for
-			
-			for(Link link : node.getLinks()){
-				if(!closed.contains(link.getDestination())){
-					closed.add(link.getDestination());
-					
-					try {
-						contents = loader.load(link.getDestination());
-					} catch (FileNotFoundException e) {
-						contents = "";
-					}
-					
-					SearchNode newNode = new SearchNode(link.getDestination(), node,
-							Link.buildLinkListFromString(contents), contents);
-					stack.push(newNode);
-				}
-				
-			}
-			
-		}//end while
-		*/
 		if(!goalFound){
 			System.out.println("Nodes visited: " + super.nodesVisited);
 			System.out.println("Goal not found");
