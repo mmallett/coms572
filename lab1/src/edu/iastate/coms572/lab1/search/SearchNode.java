@@ -1,6 +1,7 @@
-package edu.iastate.coms572.lab1;
+package edu.iastate.coms572.lab1.search;
 
 import java.util.List;
+
 
 /////////////////////////////////////////////////////////////////////////////////
 

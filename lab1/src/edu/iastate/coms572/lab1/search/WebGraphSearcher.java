@@ -1,4 +1,4 @@
-package edu.iastate.coms572.lab1;
+package edu.iastate.coms572.lab1.search;
 
 import edu.iastate.coms572.lab1.util.FileLoader;
 
@@ -19,5 +19,7 @@ public abstract class WebGraphSearcher {
 		
 		nodesVisited = 0;
 	}
+	
+	public abstract void search();
 	
 }

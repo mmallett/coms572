@@ -5,6 +5,11 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
+import edu.iastate.coms572.lab1.search.SearchNode;
+import edu.iastate.coms572.lab1.search.SearchType;
+import edu.iastate.coms572.lab1.search.SearcherFactory;
+import edu.iastate.coms572.lab1.search.WebGraphSearcher;
+import edu.iastate.coms572.lab1.util.FileLoader;
 import edu.iastate.coms572.lab1.util.Utilities;
 
 // You should call this code as follows:
@@ -54,7 +59,7 @@ public class WebSearch
 			String directoryName = args[0]; // Read the search strategy to use.
 			String searchStrategyName = args[1]; // Read the search strategy to use.
 
-			if (searchStrategyName.equalsIgnoreCase("breadth") ||
+			/*if (searchStrategyName.equalsIgnoreCase("breadth") ||
 					searchStrategyName.equalsIgnoreCase("depth")   ||
 					searchStrategyName.equalsIgnoreCase("best")    ||
 					searchStrategyName.equalsIgnoreCase("beam"))
@@ -65,12 +70,27 @@ public class WebSearch
 			{
 				System.out.println("The valid search strategies are:");
 				System.out.println("  BREADTH DEPTH BEST BEAM");
+			}*/
+			
+			FileLoader loader = new FileLoader(directoryName);
+			WebGraphSearcher searcher = SearcherFactory.getSearcher(START_NODE, GOAL_PATTERN, loader, searchStrategyName);
+			
+			if(searcher == null){
+				System.out.println("Valid search types");
+				for(SearchType type : SearchType.values()){
+					System.out.println("\t"+ type.toString());
+					return;
+				}
 			}
+			
+			searcher.search();
+			
 		}
 
-		Utilities.waitHere("Press ENTER to exit.");
+		//Utilities.waitHere("Press ENTER to exit.");
 	}
 
+	/**
 	static void performSearch(String startNode, String directoryName, String searchStrategy)
 	{
 		int nodesVisited = 0;
@@ -115,12 +135,13 @@ public class WebSearch
 		System.out.println(" Visited " + nodesVisited + " nodes, starting @" +
 				" " + directoryName + File.separator + startNode +
 				", using: " + searchStrategy + " search.");
-	}
+	}*/
 
 	// This method reads the page's contents and
 	// collects the 'children' nodes (ie, the hyperlinks on this page).
 	// The parent node is also passed in so that 'backpointers' can be
 	// created (in order to later extract solution paths).
+	/**
 	static void addNewChildrenToOPEN(SearchNode parent, String contents, String searchStrategy)
 	{
 		// StringTokenizer's are a nice class built into Java.
@@ -228,8 +249,9 @@ public class WebSearch
 				}
 			}
 		}
-	}
+	}*/
 
+	/**
 	// A GOAL is a page that contains the goalPattern set above.
 	static boolean isaGoalNode(String contents)
 	{
@@ -266,5 +288,5 @@ public class WebSearch
 
 
 		return result;
-	}
+	}*/
 }
