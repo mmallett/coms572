@@ -1,5 +1,7 @@
 package edu.iastate.coms572.lab1;
 
+import edu.iastate.coms572.lab1.search.BeamSearcher;
+import edu.iastate.coms572.lab1.search.BestFirstSearcher;
 import edu.iastate.coms572.lab1.search.BfsSearcher;
 import edu.iastate.coms572.lab1.search.DfsSearcher;
 import edu.iastate.coms572.lab1.search.WebGraphSearcher;
@@ -15,6 +17,12 @@ public class SearcherFactory {
 		}
 		else if(searchType.equalsIgnoreCase(SearchType.DFS.toString())){
 			return new DfsSearcher(startNode, goalPattern, loader);
+		}
+		else if(searchType.equalsIgnoreCase(SearchType.BEST.toString())){
+			return new BestFirstSearcher(startNode, goalPattern, loader);
+		}
+		else if(searchType.equalsIgnoreCase(SearchType.BEAM.toString())){
+			return new BeamSearcher(startNode, goalPattern, loader);
 		}
 		return null;
 	}
