@@ -80,6 +80,6 @@ public class BestFirstSearcher extends WebGraphSearcher{
 		
 
 		
-	}
+	}//end search()
 
 }
