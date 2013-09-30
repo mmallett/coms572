@@ -1,5 +1,8 @@
-package edu.iastate.coms572.lab1.search;
+package edu.iastate.coms572.lab1;
 
+import edu.iastate.coms572.lab1.search.BfsSearcher;
+import edu.iastate.coms572.lab1.search.DfsSearcher;
+import edu.iastate.coms572.lab1.search.WebGraphSearcher;
 import edu.iastate.coms572.lab1.util.FileLoader;
 
 public class SearcherFactory {

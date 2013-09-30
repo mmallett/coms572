@@ -5,9 +5,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-import edu.iastate.coms572.lab1.search.SearchNode;
-import edu.iastate.coms572.lab1.search.SearchType;
-import edu.iastate.coms572.lab1.search.SearcherFactory;
 import edu.iastate.coms572.lab1.search.WebGraphSearcher;
 import edu.iastate.coms572.lab1.util.FileLoader;
 import edu.iastate.coms572.lab1.util.Utilities;

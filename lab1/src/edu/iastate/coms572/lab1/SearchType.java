@@ -1,4 +1,4 @@
-package edu.iastate.coms572.lab1.search;
+package edu.iastate.coms572.lab1;
 
 public enum SearchType {
 

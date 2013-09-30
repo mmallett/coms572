@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+import edu.iastate.coms572.lab1.Link;
+import edu.iastate.coms572.lab1.SearchNode;
 import edu.iastate.coms572.lab1.util.FileLoader;
 
 public class BfsSearcher extends WebGraphSearcher{
