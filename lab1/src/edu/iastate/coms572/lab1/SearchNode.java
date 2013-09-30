@@ -1,5 +1,7 @@
 package edu.iastate.coms572.lab1;
 
+import java.util.List;
+
 /////////////////////////////////////////////////////////////////////////////////
 
 //You'll need to design a Search node data structure.
@@ -12,19 +14,37 @@ package edu.iastate.coms572.lab1;
 //from the start node to the current node represented by the SearchNode instance.
 public class SearchNode
 {
-	final String nodeName;
+	private String name;
 	
-	public SearchNode(String name) {
-		nodeName = name;
+	private SearchNode parent;
+	
+	private List<Link> links;
+	
+	public SearchNode(String name, SearchNode parent, List<Link> links) {
+		this.name = name;
+		this.parent = parent;
+		this.links = links;
 	}
 
 	public void reportSolutionPath() {
-		
+		System.out.println(name);
+		if(parent != null){
+			parent.reportSolutionPath();
+		}
 	}
 
-	public String getNodeName() {
-		return nodeName;
-	} 
+	public String getName() {
+		return name;
+	}
+	
+	public SearchNode getParent(){
+		return parent;
+	}
+	
+	public List<Link> getLinks(){
+		return links;
+	}
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////

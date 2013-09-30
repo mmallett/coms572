@@ -6,23 +6,18 @@ public abstract class WebGraphSearcher {
 	
 	protected String startNode;
 	
-	protected  String goalPattern;
+	protected String goalPattern;
+	
+	protected FileLoader loader;
+	
+	protected int nodesVisited;
 	
 	public WebGraphSearcher(String startNode, String goalPattern, FileLoader loader){
 		this.startNode = startNode;
 		this.goalPattern = goalPattern;
+		this.loader = loader;
 		
+		nodesVisited = 0;
 	}
-	
-	
-	
-	
-	protected SearchNode buildNodeFromFileName(String fileName){
-		
-		
-		return null;
-	}
-	
-	
 	
 }

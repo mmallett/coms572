@@ -2,11 +2,12 @@ package edu.iastate.coms572.lab1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Link {
 
-	private static String testitlul = " w18 w71 QUERY3 w73 QUERY2 w5 w48 w18 w41 w9 QUERY3 w23 w75 w4 w51 w17 QUERY2 w2 w26 w13 w7 w3 w76 w11 w28 <A HREF = page33.html > w92 w18 w6 w14 w81 </A> <A HREF = page54.html > w75 w5 </A> w87 w4 w3 <A HREF = page45.html > w86 QUERY1 w48 w12 w13 w15 </A> w85 w99 <A HREF = page61.html > QUERY1 QUERY2 </A> w13 w7 w9 w12 w15 w6 ";
+	//private static String testitlul = " w18 w71 QUERY3 w73 QUERY2 w5 w48 w18 w41 w9 QUERY3 w23 w75 w4 w51 w17 QUERY2 w2 w26 w13 w7 w3 w76 w11 w28 <A HREF = page33.html > w92 w18 w6 w14 w81 </A> <A HREF = page54.html > w75 w5 </A> w87 w4 w3 <A HREF = page45.html > w86 QUERY1 w48 w12 w13 w15 </A> w85 w99 <A HREF = page61.html > QUERY1 QUERY2 </A> w13 w7 w9 w12 w15 w6 ";
 	
 	private String dest;
 	
@@ -58,6 +59,18 @@ public class Link {
 		return linkList;
 	}
 	
+	public boolean isGoal(Set<String> goalPattern){
+		for(String item : goalPattern){
+			if(!data.contains(item)){
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	//testing ( it worked =] )
+	/*
 	public static void main(String args[]){
 		
 		for(Link link : buildLinkListFromString(testitlul)){
@@ -68,6 +81,6 @@ public class Link {
 			}
 			System.out.println(sb.toString());
 		}
-	}
+	}*/
 	
 }
