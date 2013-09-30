@@ -60,6 +60,7 @@ public class Link {
 	}
 	
 	public boolean isGoal(Set<String> goalPattern){
+		//System.out.println("Checking goal of link: " + this.toString() + " goal: " + goalPattern.toString());
 		for(String item : goalPattern){
 			if(!data.contains(item)){
 				return false;
@@ -69,6 +70,16 @@ public class Link {
 		return true;
 	}
 	
+	
+	@Override
+	public String toString(){
+		StringBuilder b = new StringBuilder();
+		b.append(dest + " ");
+		for(String item : data){
+			b.append(item + " ");
+		}
+		return b.toString();
+	}
 	//testing ( it worked =] )
 	/*
 	public static void main(String args[]){

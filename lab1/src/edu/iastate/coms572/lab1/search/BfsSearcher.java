@@ -11,18 +11,12 @@ public class BfsSearcher extends WebGraphSearcher{
 	private LinkedList<SearchNode> queue;
 	private HashSet<String> closed;
 	
-	private HashSet<String> goalSet;
-	
 	public BfsSearcher(String startNode, String goalPattern, FileLoader loader) {
 		super(startNode, goalPattern, loader);
 		
 		queue = new LinkedList<SearchNode>();
 		closed = new HashSet<String>();
 		
-		goalSet = new HashSet<String>();
-		for(String item : goalPattern.split(" ")){
-			goalSet.add(item);
-		}
 	}
 	
 	@Override
@@ -37,7 +31,7 @@ public class BfsSearcher extends WebGraphSearcher{
 			System.err.println(e);
 		}
 		
-		SearchNode start = new SearchNode(startNode, null, Link.buildLinkListFromString(contents));
+		SearchNode start = new SearchNode(startNode, null, Link.buildLinkListFromString(contents), contents);
 		queue.add(start);
 		
 		while(!queue.isEmpty()){
@@ -45,15 +39,17 @@ public class BfsSearcher extends WebGraphSearcher{
 			super.nodesVisited++;
 			
 			//check if goal state
-			for(Link link : node.getLinks()){
-				if(link.isGoal(goalSet)){
+			if(node.getRawData().contains(goalPattern)){
+				
+			//for(Link link : node.getLinks()){
+			//	if(link.isGoal(goalSet)){
 					System.out.println("Nodes visited: " + super.nodesVisited);
-					System.out.println(link.getDestination());
+					//System.out.println(link.getDestination());
 					node.reportSolutionPath();
 					return;
-				}
+			//	}
 				
-			}//end for
+			}//end if
 			
 			for(Link link : node.getLinks()){
 				if(!closed.contains(link.getDestination())){
@@ -66,7 +62,7 @@ public class BfsSearcher extends WebGraphSearcher{
 					}
 					
 					SearchNode newNode = new SearchNode(link.getDestination(), node,
-							Link.buildLinkListFromString(contents));
+							Link.buildLinkListFromString(contents), contents);
 					queue.add(newNode);
 				}
 				

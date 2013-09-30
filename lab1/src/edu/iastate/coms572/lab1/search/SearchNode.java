@@ -21,10 +21,13 @@ public class SearchNode
 	
 	private List<Link> links;
 	
-	public SearchNode(String name, SearchNode parent, List<Link> links) {
+	private String rawData;
+	
+	public SearchNode(String name, SearchNode parent, List<Link> links, String data) {
 		this.name = name;
 		this.parent = parent;
 		this.links = links;
+		this.rawData = data;
 	}
 
 	public void reportSolutionPath() {
@@ -44,6 +47,10 @@ public class SearchNode
 	
 	public List<Link> getLinks(){
 		return links;
+	}
+	
+	public String getRawData(){
+		return rawData;
 	}
 
 }
