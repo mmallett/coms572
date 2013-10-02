@@ -1,7 +1,9 @@
 package edu.iastate.coms572.lab1.search;
 
 import java.io.FileNotFoundException;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 import edu.iastate.coms572.lab1.Heuristics;
@@ -13,13 +15,13 @@ public class BeamSearcher extends WebGraphSearcher{
 	
 	public static final int BEAM_WIDTH = 10;
 
-	private PriorityQueue<SearchNode> queue;
+	private LinkedList<SearchNode> queue;
 	private HashSet<String> closed;
 	
 	public BeamSearcher(String startNode, String goalPattern, FileLoader loader) {
 		super(startNode, goalPattern, loader);
 		
-		queue = new PriorityQueue<SearchNode>();
+		queue = new LinkedList<SearchNode>();
 		closed = new HashSet<String>();
 	}
 
@@ -47,10 +49,10 @@ public class BeamSearcher extends WebGraphSearcher{
 				
 			//for(Link link : node.getLinks()){
 			//	if(link.isGoal(goalSet)){
-					System.out.println("Nodes visited: " + super.nodesVisited);
+				System.out.println("Nodes visited: " + super.nodesVisited);
 					//System.out.println(link.getDestination());
-					node.reportSolutionPath();
-					return;
+				node.reportSolutionPath();
+				return;
 			//	}
 				
 			}//end if
@@ -90,11 +92,16 @@ public class BeamSearcher extends WebGraphSearcher{
 		
 		if(queue.size() < BEAM_WIDTH){
 			queue.add(node);
+			Collections.sort(queue);
 		}
-		else{ //queue is full
+		else if(queue.get(BEAM_WIDTH -1 ).getHValue() < node.getHValue()){ 
+			queue.remove(BEAM_WIDTH - 1);
+			queue.add(node);
+			Collections.sort(queue);
+			//queue is full
 			//have to check if the node is better than an existing queued node
 			//no easy way to do it with priorityqueue unfortunately..
-			PriorityQueue<SearchNode> tmp = new PriorityQueue<SearchNode>();
+			/*PriorityQueue<SearchNode> tmp = new PriorityQueue<SearchNode>();
 			int min = node.getHValue();
 			while(!queue.isEmpty()){
 				SearchNode popped = queue.remove();
@@ -113,7 +120,7 @@ public class BeamSearcher extends WebGraphSearcher{
 					}
 					queue.add(node);
 				}
-			}
+			}*/
 			
 		}
 		

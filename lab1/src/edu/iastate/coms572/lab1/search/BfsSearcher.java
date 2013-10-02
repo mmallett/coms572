@@ -45,10 +45,10 @@ public class BfsSearcher extends WebGraphSearcher{
 				
 			//for(Link link : node.getLinks()){
 			//	if(link.isGoal(goalSet)){
-					System.out.println("Nodes visited: " + super.nodesVisited);
+				System.out.println("Nodes visited: " + super.nodesVisited);
 					//System.out.println(link.getDestination());
-					node.reportSolutionPath();
-					return;
+				node.reportSolutionPath();
+				return;
 			//	}
 				
 			}//end if
