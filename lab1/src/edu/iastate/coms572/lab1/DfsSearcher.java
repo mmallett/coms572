@@ -1,14 +1,18 @@
-package edu.iastate.coms572.lab1.search;
+package edu.iastate.coms572.lab1;
 
 import java.io.FileNotFoundException;
 import java.util.HashSet;
 
-import edu.iastate.coms572.lab1.Link;
-import edu.iastate.coms572.lab1.SearchNode;
-import edu.iastate.coms572.lab1.util.FileLoader;
-
+/**
+ * Implements breadth first search from abstract class WebGraphSearcher
+ * @author mmallett
+ *
+ */
 public class DfsSearcher extends WebGraphSearcher{
 
+	/**
+	 * Explored nodes are added to the closed set
+	 */
 	private HashSet<String> closed;
 	
 	public DfsSearcher(String startNode, String goalPattern, FileLoader loader) {
@@ -41,6 +45,11 @@ public class DfsSearcher extends WebGraphSearcher{
 		
 	}//end search()
 	
+	/*
+	 * recursive function to perform depth first search
+	 * deepens search until child finds goal or has no unexplored neighbors,
+	 * then proceeds to next child
+	 */
 	public boolean recursiveSearch(SearchNode node){
 		
 		super.nodesVisited++;

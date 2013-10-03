@@ -1,5 +1,11 @@
 package edu.iastate.coms572.lab1;
 
+/**
+ * Defines all possible search types supported
+ * by this project
+ * @author mmallett
+ *
+ */
 public enum SearchType {
 
 	BFS("breadth"),

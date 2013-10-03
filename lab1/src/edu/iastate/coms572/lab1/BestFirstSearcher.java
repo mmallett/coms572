@@ -1,19 +1,32 @@
-package edu.iastate.coms572.lab1.search;
+package edu.iastate.coms572.lab1;
 
 import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 
-import edu.iastate.coms572.lab1.Link;
-import edu.iastate.coms572.lab1.SearchNode;
-import edu.iastate.coms572.lab1.Heuristics;
-import edu.iastate.coms572.lab1.util.FileLoader;
-
+/**
+ * Implements beam search from the abstract class WebGraphSearcher
+ * @author mmallett
+ *
+ */
 public class BestFirstSearcher extends WebGraphSearcher{
 
+	/**
+	 * Unbounded heuristic weighted queue of potential arcs to explore
+	 */
 	private PriorityQueue<SearchNode> queue;
+	
+	/**
+	 * Explored nodes are stored in the closed set
+	 */
 	private HashSet<String> closed;
 	
+	/**
+	 * Creates a new best first searcher
+	 * @param startNode node to commence search from
+	 * @param goalPattern string pattern that indicates a goal page
+	 * @param loader FileLoader that is tied to the directory of the intranet for this search
+	 */
 	public BestFirstSearcher(String startNode, String goalPattern,
 			FileLoader loader) {
 		super(startNode, goalPattern, loader);
@@ -43,17 +56,12 @@ public class BestFirstSearcher extends WebGraphSearcher{
 			
 			//check if goal state
 			if(node.getRawData().contains(goalPattern)){
-				
-			//for(Link link : node.getLinks()){
-			//	if(link.isGoal(goalSet)){
-					System.out.println("Nodes visited: " + super.nodesVisited);
-					//System.out.println(link.getDestination());
-					node.reportSolutionPath();
-					return;
-			//	}
-				
+				System.out.println("Nodes visited: " + super.nodesVisited);
+				node.reportSolutionPath();
+				return;
 			}//end if
 			
+			//add neighboring arcs to queue
 			for(Link link : node.getLinks()){
 				if(!closed.contains(link.getDestination())){
 					closed.add(link.getDestination());

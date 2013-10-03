@@ -1,18 +1,32 @@
-package edu.iastate.coms572.lab1.search;
+package edu.iastate.coms572.lab1;
 
 import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import edu.iastate.coms572.lab1.Link;
-import edu.iastate.coms572.lab1.SearchNode;
-import edu.iastate.coms572.lab1.util.FileLoader;
-
+/**
+ * Implements breadth first search on the abstract class WebGraphSearcher
+ * @author mmallett
+ *
+ */
 public class BfsSearcher extends WebGraphSearcher{
 
+	/**
+	 * List of neighboring arcs to explore
+	 */
 	private LinkedList<SearchNode> queue;
+	
+	/**
+	 * Explored nodes are added to the closed set
+	 */
 	private HashSet<String> closed;
 	
+	/**
+	 * Creates a new breadth first searcher
+	 * @param startNode node to commence search from
+	 * @param goalPattern string pattern that indicates a goal page
+	 * @param loader FileLoader that is tied to the directory of the intranet for this search
+	 */
 	public BfsSearcher(String startNode, String goalPattern, FileLoader loader) {
 		super(startNode, goalPattern, loader);
 		
@@ -42,17 +56,14 @@ public class BfsSearcher extends WebGraphSearcher{
 			
 			//check if goal state
 			if(node.getRawData().contains(goalPattern)){
-				
-			//for(Link link : node.getLinks()){
-			//	if(link.isGoal(goalSet)){
+	
 				System.out.println("Nodes visited: " + super.nodesVisited);
-					//System.out.println(link.getDestination());
 				node.reportSolutionPath();
 				return;
-			//	}
 				
 			}//end if
 			
+			//add neighboring arcs to queue
 			for(Link link : node.getLinks()){
 				if(!closed.contains(link.getDestination())){
 					closed.add(link.getDestination());
